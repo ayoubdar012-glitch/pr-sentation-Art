@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les défis de l'art plastique au Maroc</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            background-color: #f8f5f2;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #f8f5f2;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            padding: 40px 70px 20px;
+            position: relative;
+        }
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #1a5276;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #e67e22;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: underline 0.8s ease forwards;
+        }
+        @keyframes underline {
+            to {
+                transform: scaleX(1);
+            }
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 0 70px 40px;
+            position: relative;
+        }
+        .content::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 70px;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(26, 82, 118, 0.1);
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+        }
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            width: 100%;
+            flex-grow: 1;
+        }
+        .challenge-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+            position: relative;
+        }
+        .challenge-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        .challenge-card:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+        .challenge-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        .challenge-card:nth-child(4) {
+            animation-delay: 0.5s;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .challenge-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(26, 82, 118, 0.05);
+            border-bottom: 1px solid rgba(26, 82, 118, 0.1);
+        }
+        .challenge-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(26, 82, 118, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .challenge-icon .material-icons {
+            font-size: 32px;
+            color: #e67e22;
+        }
+        .challenge-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a5276;
+        }
+        .challenge-content {
+            display: flex;
+            padding: 20px;
+            flex-grow: 1;
+        }
+        .challenge-text {
+            flex: 1;
+        }
+        .challenge-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .challenge-point:last-child {
+            margin-bottom: 0;
+        }
+        .challenge-point .material-icons {
+            font-size: 20px;
+            color: #e67e22;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .challenge-point-text {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+        .highlight {
+            font-weight: 600;
+            color: #e67e22;
+        }
+        .challenge-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-left: 15px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .challenge-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .challenge-image:hover img {
+            transform: scale(1.05);
+        }
+        .transition-box {
+            background-color: rgba(26, 82, 118, 0.05);
+            border-left: 4px solid #e67e22;
+            padding: 15px 20px;
+            margin-top: 25px;
+            font-style: italic;
+            color: #1a5276;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+            animation: slideInLeft 0.8s ease forwards;
+            animation-delay: 0.7s;
+            opacity: 0;
+        }
+        .transition-box::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -10px;
+            width: 20px;
+            height: 20px;
+            background-color: #e67e22;
+            transform: translateY(-50%) rotate(45deg);
+            z-index: -1;
+        }
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .art-graphic {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 120px;
+            height: 120px;
+            opacity: 0.1;
+            z-index: -1;
+            transform: rotate(15deg);
+        }
+        .art-graphic .material-icons {
+            font-size: 120px;
+            color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Les défis de l'art plastique au Maroc</h1>
+        </div>
+        <div class="content">
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <div class="challenge-icon">
+                            <i class="material-icons">account_balance</i>
+                        </div>
+                        <div class="challenge-title">Financement</div>
+                    </div>
+                    <div class="challenge-content">
+                        <div class="challenge-text">
+                            <div class="challenge-point">
+                                <i class="material-icons">arrow_right</i>
+                                <div class="challenge-point-text">Marché local <span class="highlight">modeste</span></div>
+                            </div>
+                            <div class="challenge-point">
+                                <i class="material-icons">arrow_right</i>
+                                <div class="challenge-point-text">Artistes souvent <span class="highlight">précaires</span></div>
+                            </div>
+                            <div class="challenge-point">
+                                <i class="material-icons">arrow_right</i>
+                                <div class="challenge-point-text">Mécénat limité</div>
+                            </div>
+                        </div>
+                        <div class="challenge-image">
+                            <img src="https://sfile.chatglm.cn/images-ppt/a741fc381d89.jpg" alt="Financement artistique">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <div class="challenge-icon">
+                            <i class="material-icons">school</i>
+                        </div>
+                        <div class="challenge-title">Formation</div>
+                    </div>
+                    <div class="challenge-content">
+                        <div class="challenge-text">
+                            <div class="challenge-point">
+                                <i class="material-icons">arrow_right</i>
+                                <div class="challenge-point-text">Besoin de <span class="highlight">renforcer</span> les écoles d'art</div>
+                            </div>
+                            <div class="challenge-point">
+                                <i class="material-icons">arrow_right</i>
+                                <div class="challenge-point-text">Accès limité aux <span class="highlight">technologies contemporaines</span></div>
+                            </div>
+                            <div class="challenge-point">
+                                <i class="material-icons">arrow_right</i>
+                                <div class="challenge-point-text">Manque de résidences artistiques</div>
+                            </div>
+                        </div>
+                        <div class="challenge-image">
+                            <img src="https://sfile.chatglm.cn/images-ppt/e612a94b98d2.png" alt="Formation artistique">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <div class="challenge-icon">
+                            <i class="material-icons">visibility</i>
+                        </div>
+                        <div class="challenge-title">Visibilité émergents</div>
+                    </div>
+                    <div class="challenge-content">
+                        <div class="challenge-text">
+                            <div class="challenge-point">
+                                <i class="material-icons">arrow_right</i>
+                                <div class="challenge-point-text">Accès <span class="highlight">difficile</span> aux galeries</div>
+                            </div>
+                            <div class="challenge-point">
+                                <i class="material-icons">arrow_right</i>
+                                <div class="challenge-point-text">Défi malgré les <span class="highlight">réseaux sociaux</span></div>
+                            </div>
+                            <div class="challenge-point">
+                                <i class="material-icons">arrow_right</i>
+                                <div class="challenge-point-text">Concurrence avec artistes établis</div>
+                            </div>
+                        </div>
+                        <div class="challenge-image">
+                            <img src="https://sfile.chatglm.cn/images-ppt/aee3301a2b57.jpg" alt="Visibilité artistique">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <div class="challenge-icon">
+                            <i class="material-icons">museum</i>
+                        </div>
+                        <div class="challenge-title">Conservation</div>
+                    </div>
+                    <div class="challenge-content">
+                        <div class="challenge-text">
+                            <div class="challenge-point">
+                                <i class="material-icons">arrow_right</i>
+                                <div class="challenge-point-text"><span class="highlight">Urgence</span> à préserver le patrimoine</div>
+                            </div>
+                            <div class="challenge-point">
+                                <i class="material-icons">arrow_right</i>
+                                <div class="challenge-point-text">Manque d'infrastructures adaptées</div>
+                            </div>
+                            <div class="challenge-point">
+                                <i class="material-icons">arrow_right</i>
+                                <div class="challenge-point-text">Conservation des œuvres numériques</div>
+                            </div>
+                        </div>
+                        <div class="challenge-image">
+                            <img src="https://sfile.chatglm.cn/images-ppt/55fb70acc65a.jpg" alt="Conservation patrimoine">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="transition-box">
+                Malgré ces défis, l'art plastique marocain continue de s'épanouir et d'innover...
+            </div>
+            
+            <div class="art-graphic">
+                <i class="material-icons">insights</i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

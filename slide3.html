@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position et importance de l'art plastique au Maroc</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            background-color: #f8f5f2;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #f8f5f2;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            padding: 40px 70px 20px;
+            position: relative;
+        }
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #1a5276;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #e67e22;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: underline 0.8s ease forwards;
+        }
+        @keyframes underline {
+            to {
+                transform: scaleX(1);
+            }
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 0 70px 40px;
+            position: relative;
+        }
+        .content::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 70px;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(26, 82, 118, 0.1);
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+        }
+        .left-content {
+            width: 50%;
+            padding-right: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            width: 50%;
+            padding-left: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .position-section {
+            margin-bottom: 25px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        .position-section:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        .position-section:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #e67e22;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title .material-icons {
+            margin-right: 10px;
+            color: #e67e22;
+            transform: rotate(-10deg);
+            transition: transform 0.3s ease;
+        }
+        .position-section:hover .section-title .material-icons {
+            transform: rotate(0deg) scale(1.2);
+        }
+        .section-content {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+        .highlight {
+            font-weight: 600;
+            color: #1a5276;
+            position: relative;
+            display: inline-block;
+        }
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background-color: rgba(26, 82, 118, 0.1);
+            z-index: -1;
+        }
+        .position-card {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: slideInRight 0.6s ease forwards;
+        }
+        .position-card:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+        .position-card:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        @keyframes slideInRight {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .position-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: #e67e22;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+        }
+        .position-card:hover::before {
+            transform: scaleY(1);
+        }
+        .position-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #1a5276;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .position-card h3 .material-icons {
+            margin-right: 10px;
+            font-size: 24px;
+            color: #e67e22;
+        }
+        .position-card p {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+        .image-container {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 220px;
+            margin-bottom: 20px;
+            position: relative;
+            opacity: 0;
+            animation: zoomIn 0.8s ease forwards;
+            animation-delay: 0.7s;
+        }
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(26, 82, 118, 0.1), rgba(230, 126, 34, 0.1));
+            z-index: 1;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+        .transition-box {
+            background-color: rgba(26, 82, 118, 0.05);
+            border-left: 4px solid #e67e22;
+            padding: 15px 20px;
+            margin-top: 30px;
+            font-style: italic;
+            color: #1a5276;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+            animation: slideInLeft 0.8s ease forwards;
+            animation-delay: 0.9s;
+            opacity: 0;
+        }
+        .transition-box::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -10px;
+            width: 20px;
+            height: 20px;
+            background-color: #e67e22;
+            transform: translateY(-50%) rotate(45deg);
+            z-index: -1;
+        }
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .art-graphic {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 120px;
+            height: 120px;
+            opacity: 0.1;
+            z-index: -1;
+            transform: rotate(15deg);
+        }
+        .art-graphic .material-icons {
+            font-size: 120px;
+            color: #e67e22;
+        }
+        .key-point {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        .key-point:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+        .key-point:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        .key-point:nth-child(3) {
+            animation-delay: 0.7s;
+        }
+        .key-point .material-icons {
+            font-size: 28px;
+            color: #e67e22;
+            margin-right: 15px;
+            background-color: rgba(230, 126, 34, 0.1);
+            padding: 10px;
+            border-radius: 50%;
+        }
+        .key-point-text {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Position et importance de l'art plastique au Maroc</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="position-section">
+                    <div class="section-title">
+                        <i class="material-icons">location_on</i>
+                        Position
+                    </div>
+                    <div class="section-content">
+                        • <span class="highlight">Enracinement</span> dans les symboles millénaires<br>
+                        • Dialogue avec la scène internationale<br>
+                        • Questionnement sur l'identité, la mémoire et la société
+                    </div>
+                </div>
+                
+                <div class="position-section">
+                    <div class="section-title">
+                        <i class="material-icons">stars</i>
+                        Importance
+                    </div>
+                    <div class="section-content">
+                        • Regard critique et poétique sur les transformations<br>
+                        • <span class="highlight">Vecteur d'identité</span> nationale<br>
+                        • Ambassadeur culturel sur la scène mondiale
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="https://sfile.chatglm.cn/images-ppt/407d31a93439.jpg" alt="Exposition d'art plastique contemporain marocain">
+                </div>
+                
+                <div class="transition-box">
+                    Cette position unique est incarnée par des artistes majeurs qui façonnent le paysage artistique marocain...
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="position-card">
+                    <h3><i class="material-icons">palette</i>Dialogue des cultures</h3>
+                    <p>• Synthèse entre héritage et modernité<br>
+                    • <span class="highlight">Pont entre traditions</span> et innovations<br>
+                    • Expression d'une identité hybride</p>
+                </div>
+                
+                <div class="key-point">
+                    <i class="material-icons">visibility</i>
+                    <div class="key-point-text">Miroir des transformations sociales et politiques</div>
+                </div>
+                
+                <div class="key-point">
+                    <i class="material-icons">language</i>
+                    <div class="key-point-text">Reconnaissance internationale croissante</div>
+                </div>
+                
+                <div class="key-point">
+                    <i class="material-icons">history_edu</i>
+                    <div class="key-point-text">Transmission et réinvention des savoirs traditionnels</div>
+                </div>
+                
+                <div class="art-graphic">
+                    <i class="material-icons">public</i>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

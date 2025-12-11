@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les fondements historiques</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            background-color: #f8f5f2;
+        }
+        .slide {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #f8f5f2;
+            display: flex;
+            flex-direction: column;
+        }
+        html, body { height: 100%; overflow: hidden; }
+        .header {
+            padding: 24px 70px 10px;
+        }
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a5276;
+            margin-bottom: 6px;
+            opacity: 0;
+            animation: fadeSlideDown 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
+        }
+        @keyframes fadeSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 0 70px 20px;
+            overflow: hidden;
+        }
+        .left-content {
+            width: 50%;
+            padding-right: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            width: 50%;
+            padding-left: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .period {
+            margin-bottom: 12px;
+            opacity: 0;
+            animation: periodFadeIn 0.6s ease-out forwards;
+        }
+        .period:nth-child(1) { animation-delay: 0.4s; }
+        .period:nth-child(2) { animation-delay: 0.7s; }
+        .period:nth-child(3) { animation-delay: 1s; }
+        @keyframes periodFadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .period-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #e67e22;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .period-title .material-icons {
+            margin-right: 10px;
+            color: #e67e22;
+        }
+        .period-content {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+        .highlight {
+            font-weight: 600;
+            color: #1a5276;
+        }
+        .image-container {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 90px;
+            margin: 8px 0;
+            opacity: 0;
+            animation: imageZoomIn 0.7s ease-out forwards;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(230,126,34,0.2);
+        }
+        .image-container:nth-child(2) { animation-delay: 0.8s; }
+        .image-container:nth-child(4) { animation-delay: 1.2s; }
+        @keyframes imageZoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) rotateZ(-2deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotateZ(0);
+            }
+        }
+        .image-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(230,126,34,0.2);
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+        .artist-card {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            animation: cardSlideRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transition: all 0.3s ease;
+        }
+        .artist-card:nth-child(1) { animation-delay: 0.5s; }
+        .artist-card:nth-child(2) { animation-delay: 0.8s; }
+        @keyframes cardSlideRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px) rotateY(-15deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) rotateY(0);
+            }
+        }
+        .artist-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(230,126,34,0.15);
+        }
+        .artist-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-right: 20px;
+        }
+        .artist-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .artist-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #1a5276;
+            margin-bottom: 5px;
+        }
+        .artist-info p {
+            font-size: 18px;
+            line-height: 1.4;
+        }
+        .image-container {
+            margin-top: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 250px;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Fondements Historiques : Modernité Marocaine (1900-1990)</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="period">
+                    <div class="period-title">
+                        <i class="material-icons">palette</i>
+                        Matrice traditionnelle
+                    </div>
+                    <div class="period-content">
+                        Zellige, tissages berbères, calligraphie — <span class="highlight">base visuelle millénaire</span>
+                    </div>
+                </div>
+                
+                <div class="period">
+                    <div class="period-title">
+                        <i class="material-icons">school</i>
+                        Protectorat (1912-56)
+                    </div>
+                    <div class="period-content">
+                        Écoles Tétouan (1945), Casablanca (1950) — <span class="highlight">formation moderne</span>
+                    </div>
+                </div>
+                
+                <div class="period">
+                    <div class="period-title">
+                        <i class="material-icons">people</i>
+                        Pionniers (1950-70)
+                    </div>
+                    <div class="period-content">
+                        Cherkaoui (abstraction amazighe), Gharbaoui (gestuelle)
+                    </div>
+                </div>
+
+                <div class="period">
+                    <div class="period-title">
+                        <i class="material-icons">art_track</i>
+                        École Casablanca
+                    </div>
+                    <div class="period-content">
+                        Belkahia/Melehi/Chabâa — <span class="highlight">tradition + modernité</span>
+                    </div>
+                </div>
+
+                <div class="period">
+                    <div class="period-title">
+                        <i class="material-icons">public</i>
+                        1969 : Jemaa el-Fnaa
+                    </div>
+                    <div class="period-content">
+                        <span class="highlight">Art démocratisé</span>
+                    </div>
+                </div>
+                
+                <div class="period">
+                    <div class="period-title">
+                        <i class="material-icons">videocam</i>
+                        1980-90 : Innovation
+                    </div>
+                    <div class="period-content">
+                        Vidéo/installation — <span class="highlight">ouverture internationale</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="image-container">
+                    <img src="https://static.lpnt.fr/images/2021/01/17/21208470lpw-21238992-article-jpg_7639846_1250x625.jpg" alt="Moroccan traditional art - Cherkaoui style">
+                </div>
+                
+                <div class="image-container">
+                    <img src="https://objects.lpg.cloudscale.ch/art24-web-prod/finder/11_Mangin-Marakkech-oel-art24.jpg" alt="Art contemporain marocain - Innovation 1980-90">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
